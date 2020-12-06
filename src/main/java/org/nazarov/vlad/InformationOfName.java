@@ -8,13 +8,13 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 
-public class InformationOFName {
+public class InformationOfName {
     private String maxLengthStr;
     private int countOfDuplicates;
     private int count;
     private boolean isEmpty;
 
-    public InformationOFName(String path) {
+    public InformationOfName(String path) {
         setInformation(path);
     }
 

@@ -1,7 +1,10 @@
 package org.nazarov.vlad;
 
+import org.springframework.stereotype.Component;
+
 import java.util.function.Consumer;
 
+@Component
 public class SoutConsumer implements Consumer<String> {
 
     @Override

@@ -1,7 +1,8 @@
 package org.nazarov.vlad;
 
+import org.nazarov.vlad.config.MainConfiguration;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * todo описание
@@ -14,9 +15,9 @@ public class SpringApp {
     //весь контекст нужно сделать в xml файле
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("org/nazarov/vlad/applicationContext.xml");
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfiguration.class);
 
-        InformationOfNameService informationOfNameService  = applicationContext.getBean(InformationOfNameService.class);
+        InformationOfNameService informationOfNameService = applicationContext.getBean(InformationOfNameService.class);
 
         informationOfNameService.getInformation();
     }
