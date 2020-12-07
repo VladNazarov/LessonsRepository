@@ -13,6 +13,7 @@ public class InformationOfName {
     private int countOfDuplicates;
     private int count;
     private boolean isEmpty;
+    private String[] names;
 
     public InformationOfName(String path) {
         setInformation(path);
@@ -20,6 +21,10 @@ public class InformationOfName {
 
     public int getCount() {
         return count;
+    }
+
+    public String[] getNames() {
+        return names;
     }
 
     public boolean isEmpty() {
@@ -50,6 +55,8 @@ public class InformationOfName {
                 }
 
             }
+            this.names = names.toArray(new String[0]);
+
 
             if (!names.isEmpty()) {
                 this.isEmpty = false;
@@ -65,6 +72,7 @@ public class InformationOfName {
                 }
 
                 HashSet<String> set = new HashSet<>(names);
+
 
                 this.countOfDuplicates = names.size() - set.size();
                 this.count = names.size();

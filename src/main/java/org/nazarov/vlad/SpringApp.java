@@ -10,16 +10,21 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * @author Rakhmankulov Ed
  */
 public class SpringApp {
-    //создать контекст сервиса который по System.in принимает запрос с названием файла в определенной папке
-    //в файле список имен. На выход(предусмотреть несколько варинтов) он выдает самое длинное имя, Кол-во дубликатов, общее кол-во имен
-    //весь контекст нужно сделать в xml файле
-
     public static void main(String[] args) {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfiguration.class);
 
         InformationOfNameService informationOfNameService = applicationContext.getBean(InformationOfNameService.class);
 
-        informationOfNameService.getInformation();
+        /*informationOfNameService.getInformation();*/
+
+        var names = informationOfNameService.getInformationOfName().getNames();
+        EmailService emailService = applicationContext.getBean(EmailService.class);
+        Message message = applicationContext.getBean(Message.class);
+
+        emailService.sendMessage(message);///For one
+        int count = emailService.mailing("Header", "Body", names);//For list of names
+
+        System.out.println("Count of sent messages : " + count);
     }
 
 }
