@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import java.util.function.Consumer;
 
 /**
+ * Сервис должен принимать сообщения
+ * и передавать по необходимым каналам связи
  * @author Rakhmankulov Ed
  */
 @Component
