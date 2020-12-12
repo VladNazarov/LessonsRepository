@@ -2,6 +2,8 @@ package org.nazarov.vlad;
 
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class EmailService {
 
@@ -13,7 +15,7 @@ public class EmailService {
         System.out.println(message.getBody() + System.lineSeparator());
     }
 
-    public int mailing(String header, String body, String[] recipients) {
+    public int mailing(String header, String body, List<String> recipients) {
         int numberOfSent = 0;
         for (String recipient : recipients) {
             this.sendMessage(new Message(header, body, recipient));

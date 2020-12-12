@@ -20,7 +20,7 @@ public class SpringApp {
 
         /*informationOfNameService.getInformation();*/
 
-        var names = informationOfNameService.getInformationOfName().getNames();
+        List<String> names = informationOfNameService.getInformationOfName().getNames();
         EmailService emailService = applicationContext.getBean(EmailService.class);
         Message message = applicationContext.getBean(Message.class);
 

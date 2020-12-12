@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 
 
 public class InformationOfName {
@@ -13,7 +14,7 @@ public class InformationOfName {
     private int countOfDuplicates;
     private int count;
     private boolean isEmpty;
-    private String[] names;
+    private List<String> names;
 
     public InformationOfName(String path) {
         setInformation(path);
@@ -23,7 +24,7 @@ public class InformationOfName {
         return count;
     }
 
-    public String[] getNames() {
+    public List<String> getNames() {
         return names;
     }
 
@@ -55,7 +56,7 @@ public class InformationOfName {
                 }
 
             }
-            this.names = names.toArray(new String[0]);
+            this.names = names;
 
 
             if (!names.isEmpty()) {
