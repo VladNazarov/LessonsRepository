@@ -1,9 +1,5 @@
 package org.nazarov.vlad.delivery.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +8,7 @@ import java.util.List;
  *
  * @author Rakhmankulov Ed
  */
-@Getter
-@Setter
-@Component
+
 public final class Courier extends AbstractEntity {
     private List<Consumer> consumerList;
 

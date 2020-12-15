@@ -2,7 +2,6 @@ package org.nazarov.vlad.delivery.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 /**
  * получатель доставки
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Component;
  */
 @Getter
 @Setter
-@Component
 public class Consumer extends AbstractEntity {
     private String order;
 

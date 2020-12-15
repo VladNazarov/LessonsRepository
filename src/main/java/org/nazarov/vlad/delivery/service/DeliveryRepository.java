@@ -1,65 +1,41 @@
 package org.nazarov.vlad.delivery.service;
 
-import lombok.Getter;
 import org.nazarov.vlad.delivery.model.AbstractEntity;
-import org.nazarov.vlad.delivery.model.Consumer;
-import org.nazarov.vlad.delivery.model.Courier;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-@Getter
-@Repository
-public class DeliveryRepository {
-    private Map<String, Courier> couriers;
-    private Map<String, Consumer> consumers;
+@Component
+public class DeliveryRepository<T extends AbstractEntity> {
+    private final Map<String, T> entityMap;
 
     @Autowired
-    public DeliveryRepository(Map<String, Courier> couriers, Map<String, Consumer> consumers) {
-        this.couriers = couriers;
-        this.consumers = consumers;
+    public DeliveryRepository(Map<String, T> entityMap) {
+        this.entityMap = entityMap;
     }
 
-    public Courier getCourier(String id) {
-        return couriers.get(id);
-
+    public T getEntity(String id) {
+        return entityMap.getOrDefault(id, null);
     }
 
-    public Consumer getConsumer(String id) {
-        return consumers.get(id);
-    }
-
-
-    public boolean addEntity(AbstractEntity entity) {
-        if (entity instanceof Courier) {
-            if (!couriers.containsKey(entity.getId())) {
-                couriers.put(entity.getId(), (Courier) entity);
-                return true;
-            } else {
-                return false;
-            }
-        } else if (entity instanceof Consumer) {
-            if (!consumers.containsKey(entity.getId())) {
-                consumers.put(entity.getId(), (Consumer) entity);
-                return true;
-            } else {
-                return false;
-            }
+    public boolean addEntity(T entity) {
+        if (!entityMap.containsKey(entity.getId())) {
+            entityMap.put(entity.getId(), entity);
+            return true;
         } else {
-            throw new RuntimeException("Incorrect entity!");
+            return false;
         }
-    }
-
-    public void deleteConsumer(String id) {
-        consumers.remove(id);
 
     }
 
-    public void deleteCourier(String id) {
-        couriers.remove(id);
-
+    public void deleteEntity(String id) {
+        entityMap.remove(id);
     }
 
-
+    public List<T> getListOfEntities() {
+        return new ArrayList<>(entityMap.values());
+    }
 }
