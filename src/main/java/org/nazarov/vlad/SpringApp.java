@@ -1,33 +1,27 @@
 package org.nazarov.vlad;
 
-import org.nazarov.vlad.config.MainConfiguration;
+import org.nazarov.vlad.config.DeliveryConfiguration;
+import org.nazarov.vlad.delivery.model.Courier;
+import org.nazarov.vlad.delivery.service.CourierRepository;
+import org.nazarov.vlad.delivery.service.DeliveryServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 /**
- * todo описание
  *
  * @author Rakhmankulov Ed
  */
 public class SpringApp {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfiguration.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DeliveryConfiguration.class);
+        CourierRepository courierRepository = applicationContext.getBean(CourierRepository.class);
 
-        InformationOfNameService informationOfNameService = applicationContext.getBean(InformationOfNameService.class);
+        String id = UUID.randomUUID().toString();
+        courierRepository.addEntity(new Courier(id, "Ivan"));
 
-        /*informationOfNameService.getInformation();*/
-
-        List<String> names = informationOfNameService.getInformationOfName().getNames();
-        EmailService emailService = applicationContext.getBean(EmailService.class);
-        Message message = applicationContext.getBean(Message.class);
-
-        emailService.sendMessage(message);///For one
-        int count = emailService.mailing("Header", "Body", names);//For list of names
-
-        System.out.println("Count of sent messages : " + count);
+        System.out.println(courierRepository.getEntityById(id));
     }
 
 }

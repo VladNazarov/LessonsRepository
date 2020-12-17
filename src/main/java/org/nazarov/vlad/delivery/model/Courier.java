@@ -30,4 +30,11 @@ public final class Courier extends AbstractEntity {
     public void doDelivery(){
 
     }
+
+    @Override
+    public String toString() {
+        return "Courier{" +
+                "consumerList=" + consumerList +
+                '}';
+    }
 }
