@@ -1,9 +1,7 @@
 package org.nazarov.vlad.delivery.service;
 
 import org.nazarov.vlad.delivery.model.AbstractEntity;
-import org.springframework.util.ConcurrentReferenceHashMap;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
