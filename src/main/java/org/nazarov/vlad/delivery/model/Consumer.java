@@ -11,11 +11,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Consumer extends AbstractEntity {
-    private String order;
+    private String orderId;
 
-    public Consumer(String id, String name, String order) {
+    public Consumer(String id, String name, String orderId) {
         super(id, name);
-        this.order = order;
+        this.orderId = orderId;
     }
 
 }
